@@ -2,15 +2,17 @@
 
 Edusphere is a Streamlit application designed to address the challenges of modern-day education, particularly those arising from the shift to online learning since COVID-19. Our solution aims to enhance the online learning experience by providing tools that make virtual teaching and learning more interactive and efficient. By leveraging advanced technologies, DataSense Suite simplifies and enriches the educational process for both teachers and students.
 
-##Tech Stack
+
+---
+## Tech Stack
 The DataSense Suite project utilizes a variety of technologies and libraries to deliver its features. Below is a summary of the key components used:
 
 | Stack       | Stack      | Stack      |
 |-------------|------------|------------|
-| MediaPipe   | LangChain  | gTTS       |
-| WordCloud   | PyPDF2     | Matplotlib |
-| cvzone      | OpenCV     | OpenAI     |
-| Pandas      | Streamlit  | LangChain  |
+| <span style="color:#714423">MediaPipe</span>   | <span style="color:#DEAF84">LangChain</span>  | <span style="color:#677C87">gTTS</span>       |
+| <span style="color:#714423">WordCloud</span>   | <span style="color:#DEAF84">PyPDF2</span>     | <span style="color:#677C87">Matplotlib</span> |
+| <span style="color:#714423">cvzone</span>      | <span style="color:#DEAF84">OpenCV</span>     | <span style="color:#677C87">OpenAI</span>     |
+| <span style="color:#714423">Pandas</span>      | <span style="color:#DEAF84">Streamlit</span>  | <span style="color:#677C87">LangChain</span>  |
 
 ---
 
