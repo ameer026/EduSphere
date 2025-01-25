@@ -36,22 +36,22 @@ As the name suggests, Whenever you upload a youtube link, this site helps you to
 
 ---
 
-## Installation and Usage
+## 1. Installation and Usage
 
-### Clone the Repository
+### 2. Clone the Repository
 ```bash
 git clone https://github.com/syedtaj7/EduSphere.git
 ```
-### Make a pages folder where you have cloned the code
+### 3. Make a pages folder where you have cloned the code
 
-### Copy the 2,3,4,5,6 python codes and .env and save in pages 
+### 4. Copy the 2,3,4,5,6 python codes and .env and save in pages 
 
-### Install Required Libraries
+### 5. Install Required Libraries
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run the Application
+### 6. Run the Application
 ```bash
 streamlit run 1_🏠_Home.py
 ```
