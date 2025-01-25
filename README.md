@@ -42,6 +42,9 @@ As the name suggests, Whenever you upload a youtube link, this site helps you to
 ```bash
 git clone https://github.com/syedtaj7/EduSphere.git
 ```
+### Make a pages folder where you have cloned the code
+
+### Copy the 2,3,4,5,6 python codes and .env and save in pages 
 
 ### Install Required Libraries
 ```bash
