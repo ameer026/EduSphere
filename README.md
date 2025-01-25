@@ -74,7 +74,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ---
 
 ### Author
-Developed with passion by **Asma Khanam**.
+Developed with passion by **Team EduCore**.
 
 ---
 
