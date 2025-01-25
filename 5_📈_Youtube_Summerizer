@@ -1,0 +1,145 @@
+import streamlit as st
+from dotenv import load_dotenv
+import os
+import google.generativeai as genai
+from youtube_transcript_api import YouTubeTranscriptApi
+import re
+from gtts import gTTS
+import tempfile
+
+# Page configuration
+st.set_page_config(page_title="YouTube Summarizer", page_icon="📺", layout="centered")
+
+# Load environment variables
+load_dotenv()
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+
+def extract_video_id(youtube_url):
+    try:
+        patterns = [
+            r'(?:v=|\/)([0-9A-Za-z_-]{11}).*',
+            r'(?:embed\/)([0-9A-Za-z_-]{11})',
+            r'(?:youtu\.be\/)([0-9A-Za-z_-]{11})'
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, youtube_url)
+            if match:
+                return match.group(1)
+        return None
+    except Exception as e:
+        st.error(f"Error extracting video ID: {str(e)}")
+        return None
+
+def extract_transcript_details(youtube_video_url):
+    try:
+        video_id = extract_video_id(youtube_video_url)
+        if not video_id:
+            return "Error: Could not extract video ID from URL"
+        transcript_text = YouTubeTranscriptApi.get_transcript(video_id)
+        transcript = " ".join([t['text'] for t in transcript_text])
+        return transcript
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+def generate_summary(transcript_text):
+    try:
+        model = genai.GenerativeModel('gemini-pro')
+        prompt = """Analyze this YouTube video transcript and provide:
+        1. Main Points (bullet points)
+        2. Key Takeaways
+        3. Brief Summary
+        Make it concise and clear. Here's the transcript:
+        """
+        response = model.generate_content(prompt + transcript_text)
+        return response.text
+    except Exception as e:
+        return f"Error generating summary: {str(e)}"
+
+def text_to_speech(text):
+    try:
+        tts = gTTS(text=text, lang='en')
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as fp:
+            tts.save(fp.name)
+            return fp.name
+    except Exception as e:
+        st.error(f"Error generating audio: {str(e)}")
+        return None
+
+# Main UI
+st.title("📺 YouTube Video Summarizer")
+st.markdown("### Get quick summaries of YouTube videos with AI")
+
+youtube_link = st.text_input("Enter YouTube Video URL:")
+
+if st.button("Generate Summary"):
+    if youtube_link:
+        # Progress bar container
+        progress_bar = st.progress(0)
+        status_text = st.empty()
+        
+        # Step 1: Process Video
+        status_text.text("Processing video...")
+        progress_bar.progress(20)
+        
+        video_id = extract_video_id(youtube_link)
+        if video_id:
+            st.video(f"https://youtube.com/watch?v={video_id}")
+            
+            # Step 2: Extract Transcript
+            status_text.text("Extracting transcript...")
+            progress_bar.progress(40)
+            transcript = extract_transcript_details(youtube_link)
+            
+            if not transcript.startswith("Error"):
+                # Display full transcript in expander
+                with st.expander("View Complete Transcript"):
+                    st.markdown(transcript)
+                
+                # Step 3: Generate Summary
+                status_text.text("Generating summary...")
+                progress_bar.progress(60)
+                summary = generate_summary(transcript)
+                
+                # Step 4: Generate Audio
+                status_text.text("Creating audio version...")
+                progress_bar.progress(80)
+                audio_file = text_to_speech(summary)
+                
+                # Final Step: Display Results
+                progress_bar.progress(100)
+                status_text.text("Complete!")
+                
+                # Display summary
+                st.success("Summary Generated Successfully!")
+                st.markdown(summary)
+                
+                # Display audio and download options
+                if audio_file:
+                    st.audio(audio_file, format='audio/mp3')
+                    
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        st.download_button(
+                            label="Download Summary (Text)",
+                            data=summary,
+                            file_name="summary.txt",
+                            mime="text/plain"
+                        )
+                    with col2:
+                        with open(audio_file, 'rb') as f:
+                            st.download_button(
+                                label="Download Audio Summary",
+                                data=f,
+                                file_name="summary_audio.mp3",
+                                mime="audio/mp3"
+                            )
+            else:
+                st.error(transcript)
+        else:
+            st.error("Invalid YouTube URL. Please check the URL and try again.")
+    else:
+        st.warning("Please enter a YouTube URL")
+
+# Footer
+st.markdown("---")
+st.markdown("Made with ❤️ By Team EduCore")
