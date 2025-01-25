@@ -5,14 +5,18 @@ Edusphere is a Streamlit application designed to address the challenges of moder
 
 ---
 ## Tech Stack
+
 The DataSense Suite project utilizes a variety of technologies and libraries to deliver its features. Below is a summary of the key components used:
 
-| Stack       | Stack      | Stack      |
-|-------------|------------|------------|
-| <span style="color:#714423">MediaPipe</span>   | <span style="color:#DEAF84">LangChain</span>  | <span style="color:#677C87">gTTS</span>       |
-| <span style="color:#714423">WordCloud</span>   | <span style="color:#DEAF84">PyPDF2</span>     | <span style="color:#677C87">Matplotlib</span> |
-| <span style="color:#714423">cvzone</span>      | <span style="color:#DEAF84">OpenCV</span>     | <span style="color:#677C87">OpenAI</span>     |
-| <span style="color:#714423">Pandas</span>      | <span style="color:#DEAF84">Streamlit</span>  | <span style="color:#677C87">LangChain</span>  |
+
+
+Stack         |  Stack    | Stack   
+:-------------------------:|:-------------------------: | :-------------------------:| 
+![MediaPipe](https://img.shields.io/badge/mediapipe-%23ffdb00.svg?style=for-the-badge&logo=google&logoColor=black)  |  ![LangChain](https://img.shields.io/badge/langchain-%230073ff.svg?style=for-the-badge&logo=chain&logoColor=white) | ![gTTS](https://img.shields.io/badge/gTTS-%23ffda44.svg?style=for-the-badge&logo=google&logoColor=black)| 
+![WordCloud](https://img.shields.io/badge/wordcloud-%23FF9900.svg?style=for-the-badge&logo=cloud&logoColor=white) | ![PyPDF2](https://img.shields.io/badge/pypdf2-%234B8BBE.svg?style=for-the-badge&logo=python&logoColor=white) | ![Matplotlib](https://img.shields.io/badge/matplotlib-%230079C8.svg?style=for-the-badge&logo=python&logoColor=white) | 
+![cvzone](https://img.shields.io/badge/cvzone-%2332CD32.svg?style=for-the-badge&logo=opencv&logoColor=white) | ![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white) | ![OpenAI](https://img.shields.io/badge/OpenAI-%234a4a4a.svg?style=for-the-badge&logo=openai&logoColor=white) |
+ ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) | ![Streamlit](https://img.shields.io/badge/streamlit-%23FF4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white) | ![Langchain](https://img.shields.io/badge/langchain-%23FF4B4B.svg?style=for-the-badge)|
+
 
 ---
 
