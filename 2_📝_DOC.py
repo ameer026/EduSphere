@@ -12,7 +12,7 @@ from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyByIY4yY7eCHdxsDRmcE_Z3B28aPNs0Cag")
+genai.configure(api_key="GOOGLE_API_KEY")
 model = genai.GenerativeModel("gemini-1.5-flash")
 response = model.generate_content("Explain how AI works")
 print(response.text)
