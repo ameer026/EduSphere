@@ -27,7 +27,7 @@ with col2:
     output_text_area = st.title("Answer")
     output_text_area = st.subheader("")
 
-genai.configure(api_key="AIzaSyByIY4yY7eCHdxsDRmcE_Z3B28aPNs0Cag")
+genai.configure(api_key="GOOGLE_API_KEY")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 # Initialize webcam
