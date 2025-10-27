@@ -1,0 +1,4 @@
+git add .gitignore
+git add images/head.jpeg
+git commit -m "Add logo image and stop ignoring images/"
+git push
