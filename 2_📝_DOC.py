@@ -1,15 +1,7 @@
-from dotenv import load_dotenv
-import google.generativeai as genai
-
-# Load env and configure safely (no live API call)
-load_dotenv()
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-if GOOGLE_API_KEY:
-    try:
-        genai.configure(api_key=GOOGLE_API_KEY)
-    except Exception:
-        # don't crash at import time; handle errors when performing requests
-        pass
+import streamlit as st
+from PyPDF2 import PdfReader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+import os
 
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 import google.generativeai as genai
