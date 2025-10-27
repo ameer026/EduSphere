@@ -8,9 +8,21 @@ st.set_page_config(
 )
 
 # Sidebar
-with st.sidebar:
-    st.image("images/head.jpeg")
+import os
+import streamlit as st
+from PIL import UnidentifiedImageError
 
+with st.sidebar:
+    img_path = os.path.join("images", "head.jpeg")
+    if os.path.exists(img_path):
+        try:
+            st.image(img_path)
+        except UnidentifiedImageError:
+            st.warning("Logo file exists but is not a valid image. Replace with a valid JPEG/PNG.")
+        except Exception as e:
+            st.warning(f"Could not display logo: {e}")
+    else:
+        st.info("Logo not found. Add `images/head.jpeg` to the repository to show the logo.")
 # Custom CSS
 st.markdown("""
 <style>
