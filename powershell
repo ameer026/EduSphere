@@ -1,9 +1,8 @@
-# Stop all Streamlit processes
+# Stop Streamlit
 Get-Process -Name "streamlit" -ErrorAction SilentlyContinue | Stop-Process -Force
 
-# Remove the .streamlit folder and pages
+# Clean up directories
 Remove-Item ".streamlit" -Recurse -Force -ErrorAction SilentlyContinue
 Remove-Item "pages" -Recurse -Force -ErrorAction SilentlyContinue
-
-# Create fresh pages directory
 New-Item -ItemType Directory -Path "pages" -Force
+New-Item -ItemType Directory -Path ".streamlit" -Force
