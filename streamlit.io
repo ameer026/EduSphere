@@ -1,1 +1,1 @@
-Get-Process -Name "streamlit" -ErrorAction SilentlyContinue | Stop-Process -Force
+streamlit run 1_🏠_Home.py
