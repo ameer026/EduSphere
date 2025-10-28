@@ -1,9 +1,5 @@
-# Create virtual environment
-python -m venv .venv
+# Kill Streamlit processes
+Get-Process -Name "streamlit" -ErrorAction SilentlyContinue | Stop-Process -Force
 
-# Activate the virtual environment
-.\.venv\Scripts\Activate.ps1
-
-# Upgrade pip and install requirements
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+# Also kill any Python processes that might be running Streamlit
+Get-Process -Name "python*" -ErrorAction SilentlyContinue | Stop-Process -Force
